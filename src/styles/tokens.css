@@ -1,0 +1,56 @@
+/*
+  Direction artistique : "carnet de bord / passeport".
+  - Fond papier légèrement texturé, encre marine profonde pour le texte.
+  - Accent sauge (validation, itinéraire), laiton/or vieilli (repères, dates),
+    terracotta réservé aux alertes budgétaires.
+  - Display : Fraunces (serif contemporaine, personnalité "écriture de voyage").
+  - Texte courant : Inter. Chiffres / données : JetBrains Mono (billets, budget).
+*/
+:root {
+  --color-ink: #1b2a3d;
+  --color-ink-soft: #364a5e;
+  --color-paper: #ede6d6;
+  --color-paper-raised: #f7f2e7;
+  --color-paper-line: #d9cfb8;
+  --color-sage: #6b8f71;
+  --color-sage-soft: #dbe6dc;
+  --color-brass: #c9a24b;
+  --color-brass-soft: #f1e3bf;
+  --color-rust: #b5563f;
+  --color-rust-soft: #f3ddd5;
+
+  --font-display: 'Fraunces', 'Iowan Old Style', 'Georgia', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --shadow-card: 0 1px 2px rgba(27, 42, 61, 0.06), 0 6px 20px rgba(27, 42, 61, 0.08);
+  --shadow-lift: 0 12px 32px rgba(27, 42, 61, 0.16);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ink: #ede6d6;
+    --color-ink-soft: #cfc7b3;
+    --color-paper: #16212e;
+    --color-paper-raised: #1e2e3f;
+    --color-paper-line: #2c3e51;
+    --color-sage-soft: #22332a;
+    --color-brass-soft: #362c17;
+    --color-rust-soft: #3a221d;
+    color-scheme: dark;
+  }
+}
