@@ -1,0 +1,201 @@
+@import './tokens.css';
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  background-image:
+    radial-gradient(rgba(27, 42, 61, 0.035) 1px, transparent 1px);
+  background-size: 18px 18px;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; margin: 0; }
+
+a { color: inherit; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 2px;
+}
+
+.app-shell {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) var(--space-7);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary { background: var(--color-ink); color: var(--color-paper-raised); }
+.btn-primary:hover { box-shadow: var(--shadow-card); }
+
+.btn-secondary { background: transparent; color: var(--color-ink); border-color: var(--color-paper-line); }
+.btn-secondary:hover { background: var(--color-paper-raised); }
+
+.btn-ghost { background: transparent; color: var(--color-ink-soft); border: none; padding: 6px 8px; }
+
+.btn-danger { background: var(--color-rust-soft); color: var(--color-rust); }
+
+.btn-sm { padding: 6px 10px; font-size: 0.82rem; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ---------- Champs de formulaire ---------- */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--space-4); }
+.field label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft); }
+.field input, .field textarea, .field select {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-paper-line);
+  background: var(--color-paper-raised);
+  color: var(--color-ink);
+}
+.field textarea { resize: vertical; min-height: 90px; font-family: var(--font-display); font-size: 1.05rem; line-height: 1.5; }
+.field-row { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.field-row .field { flex: 1; min-width: 140px; }
+
+/* ---------- Carte générique ---------- */
+.card {
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-paper-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+}
+
+/* ---------- En-tête d'app ---------- */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+.brand { display: flex; align-items: baseline; gap: var(--space-2); }
+.brand .stamp {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 2px solid var(--color-sage);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 600; color: var(--color-sage);
+  transform: rotate(-8deg);
+}
+
+.offline-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em;
+  padding: 5px 10px; border-radius: 999px;
+  background: var(--color-sage-soft); color: var(--color-sage);
+}
+.offline-pill.is-offline { background: var(--color-rust-soft); color: var(--color-rust); }
+.offline-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* ---------- Onglets ---------- */
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-paper-line);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  overflow-x: auto;
+  margin-bottom: var(--space-5);
+}
+.tab-nav a {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+}
+.tab-nav a.active { background: var(--color-ink); color: var(--color-paper-raised); }
+
+/* ---------- Signature : bord "papier déchiré" pour les entrées de journal ---------- */
+.torn-edge {
+  position: relative;
+}
+.torn-edge::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: -6px;
+  height: 12px;
+  background: inherit;
+  clip-path: polygon(
+    0% 100%, 4% 30%, 8% 90%, 13% 20%, 18% 80%, 24% 10%, 30% 70%,
+    36% 15%, 42% 85%, 48% 25%, 54% 75%, 60% 15%, 66% 85%, 72% 20%,
+    78% 80%, 84% 10%, 90% 70%, 96% 20%, 100% 100%
+  );
+  opacity: 0.9;
+}
+
+/* ---------- Grille voyages / galerie ---------- */
+.grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.grid.media-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+
+.media-tile {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-paper-line);
+  background: var(--color-paper-line);
+  cursor: pointer;
+}
+.media-tile img, .media-tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---------- Divers ---------- */
+.empty-state {
+  text-align: center;
+  padding: var(--space-7) var(--space-4);
+  color: var(--color-ink-soft);
+  border: 1px dashed var(--color-paper-line);
+  border-radius: var(--radius-md);
+}
+.muted { color: var(--color-ink-soft); }
+.mono { font-family: var(--font-mono); }
+.section-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.75rem; padding: 3px 9px; border-radius: 999px;
+  background: var(--color-sage-soft); color: var(--color-sage); font-weight: 600;
+}
+.chip.brass { background: var(--color-brass-soft); color: #8a6d1f; }
+.chip.rust { background: var(--color-rust-soft); color: var(--color-rust); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
